@@ -1,0 +1,74 @@
+<div class="col-sm-3 page-sidebar">
+    <aside>
+        <div class="inner-box">
+            <div class="user-panel-sidebar">
+                <div class="collapse-box">
+                    <h5 class="collapse-title no-border"> Meus Dados
+                      <a class="pull-right" data-toggle="collapse" data-target="#MyClassified">
+                        <i class="fa fa-angle-down"></i></a></h5>
+                    <div id="MyClassified" class="panel-collapse collapse in">
+                        <ul class="acc-list">
+
+                          <li>
+                            <a ng-click="goToPath('/dados-pessoais')">
+                              <i class="icon-home"></i> Dados Pessoais
+                            </a>
+                          </li>
+                        </ul>
+                    </div>
+                    <div id="MyClassified" class="panel-collapse collapse in">
+                        <ul class="acc-list">
+                            <li ng-click="goToPath('/cartoes/meus-cartoes')"><a href="javascript:void(0)"><i class="icon-credit-card"></i> Meus Cartões </a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- /.collapse-box  -->
+                <div class="collapse-box">
+                    <h5 class="collapse-title"> Meus Anúncios <a class="pull-right" data-toggle="collapse"
+                                                            data-target="#MyAds"><i class="fa fa-angle-down"></i></a>
+                    </h5>
+
+                    <div id="MyAds" class="panel-collapse collapse in">
+                        <ul class="acc-list">
+                            <li ng-click="goToPath('/anuncios')" ng-class="{active: publicadosActive}">
+                                <a href="javascript:void(0)">
+                                    <i class="icon-docs"> </i> Publicados
+                                    <span class="badge">{{totalAnunciosPublicados}}</span>
+                                </a>
+                            </li>
+                            <li ng-click="goToPath('/anuncios/aguardando_aprovacao')" ng-class="{active: aguardandoActive}">
+                                <a href="javascript:void(0)">
+                                    <i class="icon-hourglass"></i> Aguardando
+                                    <span class="badge">{{totalAnunciosAguardandoAprovacao}}</span></a>
+                            </li>
+                            <li ng-click="goToPath('/anuncios/expirados')" ng-class="{active: expiradosActive}">
+                                <a href="javascript:void(0)">
+                                    <i class="icon-folder-close"></i> Expirados
+                                    <span class="badge">{{totalAnunciosExpirados}}</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- /.collapse-box  -->
+                <div class="collapse-box">
+                    <h5 class="collapse-title"> Inativação de Conta <a class="pull-right"
+                                                                        data-toggle="collapse"
+                                                                        data-target="#TerminateAccount"><i
+                            class="fa fa-angle-down"></i></a></h5>
+
+                    <div id="TerminateAccount" class="panel-collapse collapse in">
+                        <ul class="acc-list">
+                            <li><a href="account-close.html"><i class="icon-cancel-circled "></i> Inativar </a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- /.collapse-box  -->
+            </div>
+        </div>
+        <!-- /.inner-box  -->
+
+    </aside>
+</div>
+<!--/.page-sidebar-->

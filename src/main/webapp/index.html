@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Time 02 - Escola de TI</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- bower css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/angular-toastr/dist/angular-toastr.min.css">
+    <link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.min.css">
+
+    <!-- styles needed for carousel slider -->
+    <link rel="stylesheet" href="assets/core/css/owl.carousel.css">
+    <link rel="stylesheet" href="assets/core/css/owl.theme.css">
+    <link rel="stylesheet" href="assets/core/css/bootstrap.min.css">
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="assets/core/css/style.css">
+
+    <!-- Maquinario -->
+    <link rel="stylesheet" href="assets/css/maquinario.css">
+    <link href="assets/core/plugins/bxslider/jquery.bxslider.css" rel="stylesheet" />
+</head>
+
+<body ng-app="time02site">
+    <div id="wrapper" ng-controller="MenuController">
+        <div ng-include="'app_modules/menu/topbar.html'"></div>
+        <ng-view></ng-view>
+    </div>
+
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/jquery-mask-plugin/dist/jquery.mask.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.min.js"></script>
+    <script src="bower_components/angular-toastr/dist/angular-toastr.tpls.min.js"></script>
+    <script src="bower_components/moment/min/moment.min.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.min.js"></script>
+    <script src="bower_components/angular-base64/angular-base64.js"></script>
+
+    <script src="assets/core/js/script.js"></script>
+    <script src="assets/core/js/bootstrap.min.js"></script>
+    <script src="assets/core/js/owl.carousel.min.js"></script>
+    <script src="assets/core/js/jquery.matchHeight-min.js"></script>
+    <script src="assets/core/js/hideMaxListItem.js"></script>
+    <script src="assets/core/plugins/jquery.fs.scroller/jquery.fs.scroller.js"></script>
+    <script src="assets/core/plugins/jquery.fs.selecter/jquery.fs.selecter.js"></script>
+    <script src="assets/core/js/fileinput.min.js"></script>
+    <script src="assets/core/js/pace.min.js"></script>
+    <script src="assets/core/plugins/bxslider/jquery.bxslider.min.js"></script>
+    <script type="text/javascript" src="assets/core/plugins/autocomplete/jquery.mockjax.js"></script>
+    <script type="text/javascript" src="assets/core/plugins/autocomplete/jquery.autocomplete.js"></script>
+    <script type="text/javascript" src="assets/core/plugins/autocomplete/usastates.js"></script>
+    <script type="text/javascript" src="assets/core/plugins/autocomplete/autocomplete-demo.js"></script>
+
+    <!-- Modules -->
+    <script src="app/app.module.js"></script>
+    <script src="app/app.constant.js"></script>
+    <script src="app_modules/menu/menu.module.js"></script>
+    <script src="app_modules/login/login.module.js"></script>
+    <script src="app_modules/anuncios/anuncios.module.js"></script>
+    <script src="app_modules/maquinario/maquinario.module.js"></script>
+    <script src="app_modules/categoria/categoria.module.js"></script>
+    <script src="app_modules/subcategoria/subcategoria.module.js"></script>
+    <script src="app_modules/usuario/usuario.module.js"></script>
+    <script src="app_modules/pesquisa/pesquisa.module.js"></script>
+    <script src="app_modules/avaliarAnuncios/avaliarAnuncios.module.js"></script>
+    <script src="app_modules/cartoes/cartoes.module.js"></script>
+
+    <!-- Services -->
+    <script src="services/anuncios.service.js"></script>
+    <script src="services/maquinario.service.js"></script>
+    <script src="services/categoria.service.js"></script>
+    <script src="services/usuario.service.js"></script>
+    <script src="services/subcategoria.service.js"></script>
+    <script src="services/autenticacao.service.js"></script>
+    <script src="services/estados.service.js"></script>
+    <script src="services/cartoes.service.js"></script>
+    <script src="services/cidades.service.js"></script>
+    <script src="services/endereco.service.js"></script>
+
+    <!-- Controllers e outros -->
+    <script src="app/app.controller.js"></script>
+    <script src="app_modules/menu/menu.controller.js"></script>
+    <script src="app_modules/index/index.controller.js"></script>
+    <script src="app_modules/index/index.route.js"></script>
+    <script src="assets/js/navbarScrolling.js"></script>
+    <script src="app_modules/maquinario/anunciosPublicados/anunciosPublicados.controller.js"></script>
+    <script src="app_modules/maquinario/anunciosAguardandoAprovacao/anunciosAguardandoAprovacao.controller.js"></script>
+    <script src="app_modules/maquinario/anunciosExpirados/anunciosExpirados.controller.js"></script>
+    <script src="app_modules/maquinario/anunciosNovoEditar/anunciosNovo.controller.js"></script>
+    <script src="app_modules/maquinario/anunciosNovoEditar/anunciosEditar.controller.js"></script>
+    <script src="app_modules/maquinario/anunciosDisplay/anunciosDisplay.controller.js"></script>
+    <script src="app_modules/maquinario/anunciosImpulsionar/anunciosImpulsionar.controller.js"></script>
+    <script src="app_modules/maquinario/anunciosImpulsionarPagamento/anunciosImpulsionarPagamento.controller.js"></script>
+    <script src="app_modules/avaliarAnuncios/anunciosAguardandoAvaliacao/anunciosAguardandoAvaliacao.controller.js"></script>
+    <script src="app_modules/avaliarAnuncios/displayAnunciosAguardandoAprovacao/displayAnunciosAguardandoAprovacao.controller.js"></script>
+    <script src="app_modules/avaliarAnuncios/avaliarAnuncios.route.js"></script>
+    <script src="app_modules/maquinario/diretivas/fileModel.js"></script>
+    <script src="app_modules/maquinario/diretivas/fileSetter.js"></script>
+    <script src="app_modules/maquinario/diretivas/fileDisplay.js"></script>
+    <script src="app_modules/maquinario/diretivas/creditCardType.js"></script>
+    <script src="app_modules/maquinario/diretivas/cardExpiration.js"></script>
+    <script src="app_modules/pesquisa/diretivas/fileSetterPesquisa.js"></script>
+    <script src="app_modules/anuncios/lista/lista.controller.js"></script>
+    <script src="app_modules/anuncios/anuncios.route.js"></script>
+    <script src="app_modules/maquinario/maquinario.route.js"></script>
+    <script src="app_modules/categoria/categoria.route.js"></script>
+    <script src="app_modules/categoria/categoria-criar.controller.js"></script>
+    <script src="app_modules/categoria/categoria-editar.controller.js"></script>
+    <script src="app_modules/categoria/categoria-lista.controller.js"></script>
+    <script src="app_modules/subcategoria/subcategoria.route.js"></script>
+    <script src="app_modules/subcategoria/subcategoria-criar.controller.js"></script>
+    <script src="app_modules/subcategoria/subcategoria-editar.controller.js"></script>
+    <script src="app_modules/subcategoria/subcategoria-lista.controller.js"></script>
+    <script src="app_modules/maquinario/maquinario.route.js"></script>
+    <script src="app_modules/anuncios/lista/lista.controller.js"></script>
+    <script src="app_modules/anuncios/anuncios.route.js"></script>
+    <script src="app_modules/pesquisa/pesquisar/lista.controller.js"></script>
+    <script src="app_modules/pesquisa/pesquisa.route.js"></script>
+    <script src="app_modules/usuario/cadastrar/cpfCnpj.directive.js"></script>
+    <script src="app_modules/usuario/cadastrar/senha.directive.js"></script>
+    <script src="app_modules/usuario/cadastrar/cadastrar.controller.js"></script>
+    <script src="app_modules/usuario/editar/editar.controller.js"></script>
+    <script src="app_modules/usuario/usuario.route.js"></script>
+    <script src="app_modules/login/login.route.js"></script>
+    <script src="app_modules/login/login/login.controller.js"></script>
+    <script src="app_modules/login/recuperarSenha/recuperarSenha.controller.js"></script>
+    <script src="app_modules/cartoes/meusCartoes/meusCartoes.controller.js"></script>
+    <script src="app_modules/cartoes/novoCartao/novoCartao.controller.js"></script>
+    <script src="app_modules/cartoes/diretivas/tipoCartao.js"></script>
+    <script src="app_modules/cartoes/cartoes.route.js"></script>
+    <script src="assets/js/jquery.priceformat.min.js"></script>
+</body>
+
+</html>

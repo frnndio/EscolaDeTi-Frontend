@@ -1,0 +1,413 @@
+<div class="main-container ng-scope">
+    <div class="container">
+        <div class="page-content">
+            <div class="inner-box">
+                <h2 class="title-2">
+                    <i class="icon-user-add"></i> {{titulo}}
+                </h2>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-horizontal">
+                            <div class="form-group required">
+                                <label class="col-md-4 control-label">
+                                        Tipo de cadastro
+                                        <sup>*</sup>
+                                    </label>
+                                <div class="col-md-6">
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" ng-model="tipoPessoa" value="F" >
+                                            Pessoa Física
+                                        </label>
+                                    </div>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" ng-model="tipoPessoa" value="J" >
+                                            Pessoa Jurídica
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <form class="form-horizontal" ng-show="isPessoaFisica()" name="formularioFisica" ng-submit="salvarPessoaFisica(pessoaFisica)">
+                            <fieldset>
+                                <div class="form-group required">
+                                    <label class="col-sm-4 control-label" for="nomeFisica">
+                                        Nome Completo
+                                        <sup>*</sup>
+                                    </label>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control input-md" required name="nomeFisica" id="nomeFisica" placeholder="Nome Completo" ng-model="pessoaFisica.nome">
+                                    </div>
+                                </div>
+                                <div class="form-group required">
+                                    <label for="emailFisica" class="col-sm-4 control-label">
+                                        Email
+                                        <sup>*</sup>
+                                    </label>
+                                    <div class="col-md-6">
+                                        <input type="email" class="form-control input-md" required name="emailFisica" id="emailFisica" placeholder="Email" ng-model="pessoaFisica.email">
+                                    </div>
+                                </div>
+                                <div class="form-group required">
+                                    <label for="senhaFisica" class="col-sm-4 control-label">
+                                        Senha
+                                        <sup>*</sup>
+                                    </label>
+                                    <div class="col-md-6">
+                                        <input type="password" class="form-control input-md" required name="senhaFisica" id="senhaFisica" placeholder="Senha" ng-model="pessoaFisica.senha"
+                                            ng-minlength="6" ng-maxlength="14" maxlength="14" ilio="" password-compare="{{confirmacaoSenhaFisica}}">
+                                        <p class="help-block">
+                                            A senha deve conter de 6 à 14 caracteres.
+                                        </p>
+                                        <div ng-messages="formularioFisica.senhaFisica.$error" style="color:maroon" role="alert">
+                                            <div ng-message="minlength">Deve conter pelo menos 6 caracteres</div>
+                                            <div ng-message="maxlength">Pode conter até 14 caracteres</div>
+                                            <div ng-message="senhaValida">As senhas não conferem</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group required" ng-show="isCadastro">
+                                    <label for="senhaFisica" class="col-sm-4 control-label">
+                                        Confirmação de Senha
+                                        <sup>*</sup>
+                                    </label>
+                                    <div class="col-md-6">
+                                        <input type="password" class="form-control input-md" required name="confirmacaoFisica" id="confirmacaoFisica" placeholder="Confirmação de senha" ng-model="confirmacaoSenhaFisica" maxlength="14">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">
+                                        Sexo
+                                    </label>
+                                    <div class="col-md-6">
+                                        <div class="radio">
+                                            <label for="sexoMasculino">
+                                                <input name="sexoMasculino" id="sexoMasculino" value="MASCULINO" type="radio" ng-model="pessoaFisica.sexo">
+                                                Masculino
+                                            </label>
+                                        </div>
+                                        <div class="radio">
+                                            <label for="sexoFeminino">
+                                                <input name="sexoFeminino" id="sexoFeminino" value="FEMININO" type="radio" ng-model="pessoaFisica.sexo">
+                                                Feminino
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group required">
+                                    <label for="fisicaCpf" class="col-sm-4 control-label">
+                                        CPF
+                                        <sup>*</sup>
+                                    </label>
+                                    <div class="col-md-6">
+                                        <input type="text" placeholder="CPF" class="form-control input-md" required name="fisicaCpf" id="fisicapf" ng-model="pessoaFisica.cpf"
+                                            data-mask="cpf" cpf>
+                                        <div ng-messages="formularioFisica.fisicaCpf.$error" style="color:maroon" role="alert">
+                                            <div ng-message="cpfValidator">CPF Inválido</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group required">
+                                    <label for="fisicaDataNascimento" class="control-label col-sm-4">
+                                        Data de Nascimento
+                                        <sup>*</sup>
+                                    </label>
+                                    <div class="col-md-6">
+                                        <input type="text" placeholder="Data de Nascimento" class="form-control input-md" required name="fisicaDataNascimento" id="fisicaDataNascimento"
+                                            data-mask="data" ng-model="pessoaFisica.dataNascimento">
+                                    </div>
+                                </div>
+                                <div class="form-group required">
+                                    <label for="fisicaTelefone" class="col-sm-4 control-label">
+                                        Telefone
+                                        <sup>*</sup>
+                                    </label>
+                                    <div class="col-md-6">
+                                        <input type="text" placeholder="Telefone" class="form-control input-md" required name="fisicaTelefone" id="fisicaTelefone"
+                                            ng-model="pessoaFisica.telefone" data-mask="phone">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="fisicaCelular" class="col-sm-4 control-label">
+                                        Celular
+                                    </label>
+                                    <div class="col-md-6">
+                                        <input type="text" placeholder="Celular" class="form-control input-md" name="fisicaCelular" id="fisicaCelular" ng-model="pessoaFisica.celular"
+                                            data-mask="phone">
+                                    </div>
+                                </div>
+                                <div class="form-group required">
+                                    <label for="fisicaTelefone" class="col-sm-4 control-label">
+                                        Estados
+                                        <sup>*</sup>
+                                    </label>
+                                    <div class="col-md-6">
+                                        <select class="form-control" name="" ng-model="pessoaFisica.idEstado" ng-options="estado.id as (estado.sigla + ' - ' + estado.nome) for estado in estados | orderBy:'nome'" ng-change="loadCidades(pessoaFisica.idEstado)">
+                                            <option value="" disabled>Selecione...</option>
+                                          </select>
+                                    </div>
+                                </div>
+                                <div class="form-group required">
+                                    <label for="fisicaTelefone" class="col-sm-4 control-label">
+                                        Cidades
+                                        <sup>*</sup>
+                                    </label>
+                                    <div class="col-md-6">
+                                        <select class="form-control" name="" ng-model="pessoaFisica.idCidade" ng-options="cidade.id as cidade.nome for cidade in cidades | orderBy:'nome'" ng-disabled="pessoaFisica.idEstado == undefined">
+                                            <option value="" disabled>Selecione...</option>
+                                          </select>
+                                    </div>
+                                </div>
+                                <div class="form-group required">
+                                    <label for="fisicaEndereco" class="col-sm-4 control-label">
+                                        Rua
+                                        <sup>*</sup>
+                                    </label>
+                                    <div class="col-md-6">
+                                        <input type="text" placeholder="Endereço" class="form-control input-md" required name="fisicaEndereco" id="fisicaEndereco"
+                                            ng-model="pessoaFisica.rua">
+                                    </div>
+                                </div>
+                                <div class="form-group required">
+                                    <label for="fisicaNumero" class="col-sm-4 control-label">
+                                        Número
+                                        <sup>*</sup>
+                                    </label>
+                                    <div class="col-md-6">
+                                        <input type="text" placeholder="Número" class="form-control input-md" required name="fisicaNumero" id="fisicaNumero" ng-model="pessoaFisica.numero">
+                                    </div>
+                                </div>
+                                <div class="form-group required">
+                                    <label for="fisicaBairro" class="col-sm-4 control-label">
+                                        Bairro
+                                        <sup>*</sup>
+                                    </label>
+                                    <div class="col-md-6">
+                                        <input type="text" placeholder="Bairro" class="form-control input-md" required name="fisicaBairro" id="fisicaBairro" ng-model="pessoaFisica.bairro">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="fisicaComplementos" class="col-sm-4 control-label">
+                                        Complemento
+                                    </label>
+                                    <div class="col-md-6">
+                                        <input type="text" placeholder="Complemento" class="form-control input-md" name="fisicaComplemento" id="fisicaComplemento"
+                                            ng-model="pessoaFisica.complemento">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label"></label>
+
+                                    <div class="col-md-8">
+                                        <button type="submit" class="btn btn-primary" ng-disabled="formularioFisica.$invalid">
+                                            Salvar
+                                        </button>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                        <form class="form-horizontal" ng-show="isPessoaJuridica()" ng-submit="salvarPessoaJuridica(pessoaJuridica)" name="formJuridica">
+                            <fieldset>
+                                <div class="form-group required">
+                                    <label class="col-sm-4 control-label" for="razaoSocialJuridica">
+                                        Razão Social
+                                        <sup>*</sup>
+                                    </label>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control input-md" required name="razaoSocialJuridica" id="razaoSocialJuridica" placeholder="Razão Social"
+                                            ng-model="pessoaJuridica.razaoSocial">
+                                    </div>
+                                </div>
+                                <div class="form-group required">
+                                    <label for="emailJuridica" class="col-sm-4 control-label">
+                                        Email
+                                        <sup>*</sup>
+                                    </label>
+                                    <div class="col-md-6">
+                                        <input type="email" class="form-control input-md" required name="emailJuridica" id="emailJuridica" placeholder="Email" ng-model="pessoaJuridica.email">
+                                    </div>
+                                </div>
+                                <div class="form-group required">
+                                    <label for="senhaJuridica" class="col-sm-4 control-label">
+                                        Senha
+                                        <sup>*</sup>
+                                    </label>
+                                    <div class="col-md-6">
+                                        <input type="password" class="form-control input-md" required name="senhaJuridica" id="senhaJuridica" placeholder="Senha"
+                                            ng-model="pessoaJuridica.senha" ng-minlength="6" ng-maxlength="14" maxlength="14" password-compare="{{confirmacaoSenhaJuridica}}">
+                                        <p class="help-block">
+                                            A senha deve conter de 6 à 14 caracteres.
+                                        </p>
+                                        <div ng-messages="formJuridica.senhaJuridica.$error" style="color:maroon" role="alert">
+                                            <div ng-message="minlength">Deve conter pelo menos 6 caracteres</div>
+                                            <div ng-message="maxlength">Pode conter até 14 caracteres</div>
+                                            <div ng-message="senhaValida">As senhas não conferem</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group required" ng-show="isCadastro">
+                                    <label for="senhaFisica" class="col-sm-4 control-label">
+                                        Confirmação de Senha
+                                        <sup>*</sup>
+                                    </label>
+                                    <div class="col-md-6">
+                                        <input type="password" class="form-control input-md" required name="confirmacaoJuridica" id="confirmacaoJuridica" placeholder="Confirmação de senha" ng-model="confirmacaoSenhaJuridica" maxlength="14">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">
+                                        Informações tributárias
+                                    </label>
+                                    <div class="col-md-6">
+                                        <div class="radio">
+                                            <label for="contribuinteICMS">
+                                                <input name="contribuinteICMS" id="contribuinteICMS" value="CONTRIBUINTE" type="radio" ng-model="pessoaJuridica.informacaoTributaria">
+                                                Contribuinte de ICMS
+                                            </label>
+                                        </div>
+                                        <div class="radio">
+                                            <label for="naoContribuinte">
+                                                <input name="naoContribuinte" id="naoContribuinte" value="NAO_CONTRIBUINTE" type="radio" ng-model="pessoaJuridica.informacaoTributaria">
+                                                Não contribuinte
+                                            </label>
+                                        </div>
+                                        <div class="radio">
+                                            <label for="isento">
+                                                <input name="isento" id="isento" value="ISENTO" type="radio" ng-model="pessoaJuridica.informacaoTributaria">
+                                                Isento de inscrição estadual
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group required">
+                                    <label for="juridicaCnpj" class="col-sm-4 control-label">
+                                        CNPJ
+                                        <sup>*</sup>
+                                    </label>
+                                    <div class="col-md-6">
+                                        <input type="text" placeholder="CNPJ" class="form-control input-md" required name="juridicaCnpj" id="juridicaCnpj" ng-model="pessoaJuridica.cnpj"
+                                            data-mask="cnpj" cnpj>
+                                        <div ng-messages="formJuridica.juridicaCnpj.$error" style="color:maroon" role="alert">
+                                            <div ng-message="cnpjValidator">CNPJ Inválido</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="juridicaInscricaoEstadual" class="control-label col-sm-4">
+                                        Inscrição estadual
+                                    </label>
+                                    <div class="col-md-6">
+                                        <input type="text" placeholder="Inscrição estadual" class="form-control input-md" name="juridicaInscricaoEstadual" id="juridicaInscricaoEstadual"
+                                            ng-model="pessoaJuridica.inscricaoEstadual">
+                                    </div>
+                                </div>
+                                <div class="form-group required">
+                                    <label for="juridicaResponsavel" class="col-sm-4 control-label">
+                                        Responsável
+                                        <sup>*</sup>
+                                    </label>
+                                    <div class="col-md-6">
+                                        <input type="text" placeholder="Responsável" class="form-control input-md" required name="juridicaResponsavel" id="juridicaResponsavel"
+                                            ng-model="pessoaJuridica.nomeResponsavel">
+                                    </div>
+                                </div>
+                                <div class="form-group required">
+                                    <label for="juridicaTelefone" class="col-sm-4 control-label">
+                                        Telefone
+                                        <sup>*</sup>
+                                    </label>
+                                    <div class="col-md-6">
+                                        <input type="text" placeholder="Telefone" class="form-control input-md" name="juridicaTelefone" id="juridicaTelefone" ng-model="pessoaJuridica.telefone"
+                                            data-mask="phone">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="juridicaCelular" class="col-sm-4 control-label">
+                                        Celular
+                                    </label>
+                                    <div class="col-md-6">
+                                        <input type="text" placeholder="Celular" class="form-control input-md" name="juridicaCelular" id="juridicaCelular" ng-model="pessoaJuridica.celular"
+                                            data-mask="phone">
+                                    </div>
+                                </div>
+                                <div class="form-group required">
+                                    <label for="fisicaTelefone" class="col-sm-4 control-label">
+                                        Estados
+                                        <sup>*</sup>
+                                    </label>
+                                    <div class="col-md-6">
+                                        <select class="form-control" name="" ng-model="pessoaJuridica.idEstado" ng-options="estado.id as (estado.sigla + ' -- ' + estado.nome) for estado in estados | orderBy:'nome'" ng-change="loadCidades(pessoaJuridica.idEstado)">
+                                            <option value="" disabled>Selecione...</option>
+                                          </select>
+                                    </div>
+                                </div>
+                                <div class="form-group required">
+                                    <label for="fisicaTelefone" class="col-sm-4 control-label">
+                                        Cidades
+                                        <sup>*</sup>
+                                    </label>
+                                    <div class="col-md-6">
+                                        <select class="form-control" name="" ng-model="pessoaJuridica.idCidade" ng-options="cidade.id as cidade.nome for cidade in cidades | orderBy:'nome'" ng-disabled="pessoaJuridica.idEstado == undefined">
+                                            <option value="" disabled>Selecione...</option>
+                                          </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group required">
+                                    <label for="juridicaEndereco" class="col-sm-4 control-label">
+                                        Rua
+                                        <sup>*</sup>
+                                    </label>
+                                    <div class="col-md-6">
+                                        <input type="text" placeholder="Endereço" class="form-control input-md" required name="juridicaEndereco" id="juridicaEndereco"
+                                            ng-model="pessoaJuridica.rua">
+                                    </div>
+                                </div>
+                                <div class="form-group required">
+                                    <label for="juridicaNumero" class="col-sm-4 control-label">
+                                        Número
+                                        <sup>*</sup>
+                                    </label>
+                                    <div class="col-md-6">
+                                        <input type="text" placeholder="Número" class="form-control input-md" required name="juridicaNumero" id="juridicaNumero"
+                                            ng-model="pessoaJuridica.numero">
+                                    </div>
+                                </div>
+                                <div class="form-group required">
+                                    <label for="juridicaBairro" class="col-sm-4 control-label">
+                                        Bairro
+                                        <sup>*</sup>
+                                    </label>
+                                    <div class="col-md-6">
+                                        <input type="text" placeholder="Bairro" class="form-control input-md" required name="juridicaBairro" id="juridicaBairro"
+                                            ng-model="pessoaJuridica.bairro">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="juridicaComplemento" class="col-sm-4 control-label">
+                                        Complemento
+                                    </label>
+                                    <div class="col-md-6">
+                                        <input type="text" placeholder="Complemento" class="form-control input-md" name="juridicaComplemento" id="juridicaComplemento"
+                                            ng-model="pessoaJuridica.complemento">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label"></label>
+
+                                    <div class="col-md-8">
+                                        <button type="submit" class="btn btn-primary" ng-disabled="formJuridica.$invalid">
+                                            Salvar
+                                        </button>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

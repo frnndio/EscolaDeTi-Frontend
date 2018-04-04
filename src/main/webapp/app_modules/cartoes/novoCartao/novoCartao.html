@@ -1,0 +1,99 @@
+<div class="main-container">
+        <div class="container">
+            <div class="row">
+
+                <div ng-include="'navbar.html'"></div>
+
+                <div class="col-md-9 page-content" id="ads-post">
+                    <div class="inner-box category-content">
+                        <h2 class="title-2 uppercase"><strong> <i class="icon-credit-card"></i>Cadastrar Novo Cartão</strong></h2>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <form class="form-horizontal" name="novoCartaoForm" ng-submit="salvarCartao(cartaoCredito)">
+                                    <fieldset>
+    
+                                        <!-- Campo número do cartão -->
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">Nº do Cartão</label>
+    
+                                            <div class="col-md-8">
+                                                <input id="numeroCartao" name="numeroCartao" placeholder="Informe o nº do cartão" class="form-control input-md" type="text" ng-model="cartaoCredito.numeroCartao" ng-required="true" tipo-cartao=""> 
+                                            </div>
+                                        </div>
+    
+                                        <!-- Mensagem de validação campo número do cartão -->
+                                        <div class="warning-msg" ng-if="novoCartaoForm.numeroCartao.$error.required && novoCartaoForm.numeroCartao.$dirty">
+                                            <p>O campo Nº do Cartão é obrigatório, por favor informe um valor.</p>
+                                        </div>
+    
+                                        <!-- Campo nome do titular -->
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">Nome do Titular</label>
+    
+                                            <div class="col-md-8">
+                                                <input id="nomeTitular" name="nomeTitular" placeholder="Infome o nome do titular" class="form-control input-md" type="text" ng-model="cartaoCredito.nomeTitular" ng-required="true">
+                                            </div>
+                                        </div>
+    
+                                        <!-- Mensagem de validação campo nome titular -->
+                                        <div class="warning-msg" ng-if="novoCartaoForm.nomeTitular.$error.required && novoCartaoForm.nomeTitular.$dirty">
+                                            <p>O campo Nome do Titular é obrigatório, por favor informe um valor.</p>
+                                        </div>
+    
+                                        <!-- Campo validade -->
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">Validade</label>
+    
+                                            <div class="col-md-4">
+                                                <select id="mesValidade" name="mesValidade" class="form-control" ng-model="cartaoCredito.mesValidade" ng-required="true">
+                                                    <option value="">Mês</option>
+                                                    <option ng-repeat="mes in meses" value="{{mes}}">{{mes}}</option>
+                                                </select>
+                                            </div>
+    
+                                            <div class="col-md-4">
+                                                <select id="anoValidade" name="anoValidade" class="form-control" ng-model="cartaoCredito.anoValidade" ng-required="true">
+                                                    <option value="">Ano</option>
+                                                    <option ng-repeat="ano in anos" value="{{ano}}">{{ano}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+    
+                                        <!-- Mensagem de validação campo mês -->
+                                        <div class="warning-msg" ng-if="novoCartaoForm.mesValidade.$error.required && novoCartaoForm.mesValidade.$dirty">
+                                            <p>O campo Mês é obrigatório, por favor informe um valor.</p>
+                                        </div>
+    
+                                        <!-- Mensagem de validação campo ano -->
+                                        <div class="warning-msg" ng-if="novoCartaoForm.anoValidade.$error.required && novoCartaoForm.anoValidade.$dirty">
+                                            <p>O campo Ano é obrigatório, por favor informe um valor.</p>
+                                        </div>
+
+                                        <!-- Campo bandeira -->
+                                        <div class="form-group">
+                                                <label class="col-md-3 control-label">Bandeira</label>
+        
+                                                <div class="col-md-8">
+                                                    <input id="bandeira" name="bandeira" placeholder="Bandeira" class="form-control input-md" type="text" ng-model="cartaoCredito.bandeira" readonly> 
+                                                </div>
+                                            </div>
+    
+                                        <div class="form-group finalizar-btn">
+                                            <label class="col-md-3 control-label"></label>
+    
+                                            <div class="col-md-8"><button type="submit" id="pagamentoBtn" class="btn btn-primary btn-lg" ng-disabled="novoCartaoForm.$invalid">Cadastrar</button></div>
+                                        </div>
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.page-content -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </div>
+    <!-- /.main-container -->
+    

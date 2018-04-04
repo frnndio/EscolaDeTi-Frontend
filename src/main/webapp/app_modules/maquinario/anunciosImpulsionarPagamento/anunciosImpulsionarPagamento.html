@@ -1,0 +1,167 @@
+<div class="main-container">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 page-content" id="ads-post">
+                <div class="inner-box category-content">
+
+                    <h2 class="title-2 uppercase"><strong> <i class="icon-credit-card"></i>Pagamento</strong></h2>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <form class="form-horizontal" name="anuncioMaquinarioForm" ng-submit="finalizar(dadosPagamento)">
+                                <fieldset>
+
+                                    <!-- Campo número do cartão -->
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Nº do cartão</label>
+
+                                        <div class="col-md-8">
+                                            <input id="numeroCartao" name="numeroCartao" placeholder="5555.6666.7777.8888" class="form-control input-md" type="text" ng-model="dadosPagamento.numeroCartao" ng-required="true" ng-maxlength="22" ng-data-maxlength="22">
+                                        </div>
+                                    </div>
+
+                                    <!-- Mensagem de validação campo número do cartão -->
+                                    <div class="warning-msg" ng-if="anuncioMaquinarioForm.numeroCartao.$error.required && anuncioMaquinarioForm.numeroCartao.$dirty">
+                                        <p>O campo Nº do Cartão é obrigatório, por favor informe um valor.</p>
+                                    </div>
+
+                                    <div class="warning-msg" ng-if="anuncioMaquinarioForm.numeroCartao.$error.maxlength">
+                                        <p>O cartão de crédito deve ter 16 dígitos.</p>
+                                    </div>
+
+                                    <div class="warning-msg" ng-if="anuncioMaquinarioForm.numeroCartao.$error.pattern">
+                                        <p>O campo Nº do cartão deve conter apenas números.</p>
+                                    </div>
+
+                                    <div class="warning-msg" ng-if="anuncioMaquinarioForm.numeroCartao.$error.invalid">
+                                        <p>O cartão de crédito deve ser um cartão Visa ou Master válido</p>
+                                    </div>
+
+                                    <!-- Campo nome do titular -->
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Nome do Titular</label>
+                                        <div class="col-md-8">
+                                            <input id="nomeTitular" name="nomeTitular" placeholder="Ex. JOSE DA SILVA" class="form-control input-md" type="text" ng-model="dadosPagamento.nomeTitular" ng-required="true">
+                                        </div>
+                                    </div>
+
+                                    <!-- Mensagem de validação campo nome titular -->
+                                    <div class="warning-msg" ng-if="anuncioMaquinarioForm.nomeTitular.$error.required && anuncioMaquinarioForm.nomeTitular.$dirty">
+                                        <p>O campo Nome do Titular é obrigatório, por favor informe um valor.</p>
+                                    </div>
+
+                                    <!-- Campo validade -->
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Validade</label>
+
+                                       <div class="col-md-4">
+                                            <select name="mesValidade"
+                                                    id="mes"
+                                                    class="form-control"
+                                                    ng-model="dadosPagamento.mesValidade"
+                                                    ng-options="mes for mes in meses"
+                                                    required>
+                                                <option value="" selected="selected" >Mês</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <select name="anoValidade"
+                                                    id="ano"
+                                                    class="form-control"
+                                                    ng-model="dadosPagamento.anoValidade"
+                                                    ng-options="ano for ano in anos"
+                                                    required>
+                                                <option value="" selected="selected" >Ano</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <!-- Mensagem de validação campo mês -->
+                                    <div class="warning-msg" ng-if="anuncioMaquinarioForm.mesValidade.$error.required && anuncioMaquinarioForm.mesValidade.$dirty">
+                                        <p>O campo Mês é obrigatório, por favor informe um valor.</p>
+                                    </div>
+
+                                    <!-- Mensagem de validação campo ano -->
+                                    <div class="warning-msg" ng-if="anuncioMaquinarioForm.anoValidade.$error.required && anuncioMaquinarioForm.anoValidade.$dirty">
+                                        <p>O campo Ano é obrigatório, por favor informe um valor.</p>
+                                    </div>
+                                    
+                                    <!-- Campo CPF/CNPJ  -->
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">CPF/CNPJ</label>
+
+                                        <div class="col-md-8">
+                                            <input id="cpfCnpj" name="cpfCnpj" placeholder="Ex. 111.222.333-44 ou 11.222.333/4444-55 " class="form-control input-md" type="text" ng-model="dadosPagamento.cpfCnpj" ng-required="true" cpf>
+                                        </div>
+                                    </div>
+
+                                    <!-- Mensagem de validação campo CPF/CNPJ -->
+                                    <div class="warning-msg" ng-if="anuncioMaquinarioForm.cpfCnpj.$error.required && anuncioMaquinarioForm.cpfCnpj.$dirty">
+                                        <p>O campo CPF/CNPJ é obrigatório, por favor informe um valor.</p>
+                                    </div>
+
+                                    <div ng-if="dadosPagamento.cpfCnpj.length >= 14" class="warning-msg" ng-messages="anuncioMaquinarioForm.cpfCnpj.$error">
+                                        <p ng-message="cpfValidator">CPF inválido</p>
+                                    </div>
+
+                                    <!-- Campo codigo de segurança  -->
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Código de segurança</label>
+
+                                        <div class="col-md-4">
+                                            <input id="codigoDeSeguranca" name="codigoDeSeguranca" placeholder="Ex. 348" class="form-control input-md" type="text" ng-model="dadosPagamento.codigoSeguranca" ng-required="true" ng-maxlength="4" ng-data-maxlength="3" ng-pattern="/^[0-9]+$/">
+                                        </div>
+                                    </div>
+
+                                    <!-- Mensagem de validação campo código de segurança-->
+                                    <div class="warning-msg" ng-if="anuncioMaquinarioForm.codigoDeSeguranca.$error.required && anuncioMaquinarioForm.codigoDeSeguranca.$dirty">
+                                        <p>O campo Código de Segurança é obrigatório, por favor informe um valor.</p>
+                                    </div>
+
+                                    <!-- Mensagem de validação campo código de segurança-->
+                                    <div class="warning-msg" ng-if="anuncioMaquinarioForm.codigoDeSeguranca.$error.pattern">
+                                        <p>O campo código de segurança deve conter apenas números.</p>
+                                    </div>
+
+                                    <!-- Mensagem de validação campo código de segurança-->
+                                    <div class="warning-msg" ng-if="anuncioMaquinarioForm.codigoDeSeguranca.$error.maxlength">
+                                        <p>O campo código de segurança deve ter 3-4 dígitos.</p>
+                                    </div>
+
+                                    <div class="form-group finalizar-btn">
+                                        <label class="col-md-3 control-label"></label>
+                                        <div class="col-md-8"><button type="submit" id="pagamentoBtn" class="btn btn-primary btn-lg" ng-disabled="anuncioMaquinarioForm.$invalid">Finalizar</button></div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.page-content -->
+
+            <div class="col-md-3 reg-sidebar">
+                <div class="reg-sidebar-inner text-center">
+                    <div class="panel sidebar-panel">
+                        <div class="panel-heading uppercase">
+                            <small><strong>Atenção!</strong></small>
+                        </div>
+                        <div class="panel-content">
+                            <div class="panel-body text-left">
+                                <ul class="list-check">
+                                    <li> Informe o nome do titular exatamente como está no cartão. </li>
+                                    <li> O código de segurança são os 3 digitos atrás do cartão. </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--/.reg-sidebar-->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+</div>
+<!-- /.main-container -->

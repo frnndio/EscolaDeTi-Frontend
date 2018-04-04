@@ -1,0 +1,160 @@
+
+    <div class="search-row-wrapper" style="background-image: url(assets/img/c4.jpg);">
+        <div class="container">
+            <form name="formPesquisar" ng-submit="pesquisar(pesquisa)">
+                <div class="col-sm-3">
+                    <select name="categoria" id="categoria" class="form-control" ng-model="pesquisa.categoria" ng-required="true">
+                        <option value="" selected="selected">Categoria</option>
+                        <option ng-repeat="categoria in categorias" value="{{categoria.nome}}">{{categoria.nome}}</option>
+                    </select>
+                </div>
+                <div class="col-sm-3">
+                    <select name="subcategoria" id="subcategoria" class="form-control" ng-model="pesquisa.subcategoria" ng-required="true">
+                        <option value="" selected="selected">Subcategoria</option>
+                        <option ng-repeat="subcategoria in getSubcategorias(categorias, pesquisa.categoria)" value="{{subcategoria.nome}}">{{subcategoria.nome}}</option>
+                    </select>            
+                </div>
+                <div class="col-sm-3">
+                    <select class="form-control" ng-model="pesquisa.filtro">
+                        <option value="" disabled>Ordenar por</option>
+                        <option value="-codigo">Mais Novos</option>
+                        <option value="codigo">Mais Antigos</option>
+                        <option value="preco">Menor Preço</option>
+                        <option value="-preco">Maior Preço</option>
+                        <option value="titulo">A-Z</option>
+                        <option value="-titulo">Z-A</option>
+                    </select>
+                </div>
+                <div class="col-sm-3">
+                    <button type="submit" class="btn btn-block btn-primary  "><i class="fa fa-search"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- /.search-row -->
+    <div class="main-container">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-sm-12 page-content col-thin-left">
+                    <div class="category-list">
+
+                        <div class="listing-filter">
+                            <div class="pull-right col-xs-12 text-right listing-view-action"><span
+                                    class="list-view active"><i class="  icon-th"></i></span> <span
+                                    class="compact-view"><i class=" icon-th-list  "></i></span> <span
+                                    class="grid-view "><i class=" icon-th-large "></i></span></div>
+                            <div style="clear:both"></div>
+                        </div>
+                        <!--/.listing-filter-->
+
+
+                        <!-- Mobile Filter bar-->
+                        <div class="mobile-filter-bar col-lg-12  ">
+                            <ul class="list-unstyled list-inline no-margin no-padding">
+                                <li class="filter-toggle">
+                                    <a class="">
+                                        <i class="  icon-th-list"></i>
+                                        Filters
+                                    </a>
+                                </li>
+                                <li>
+
+
+                                    <div class="dropdown">
+                                        <a data-toggle="dropdown" class="dropdown-toggle"><i class="caret "></i> Short
+                                            by </a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="" rel="nofollow">Relevance</a></li>
+                                            <li><a href="" rel="nofollow">Date</a></li>
+                                            <li><a href="" rel="nofollow">Company</a></li>
+                                        </ul>
+                                    </div>
+
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="menu-overly-mask"></div>
+                        <!-- Mobile Filter bar End-->
+
+                        <div class="adds-wrapper">
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="allAds">
+
+                                    <div class="item-list make-list" ng-repeat="item in anuncios | orderBy:ordenar">
+                                        <div class="col-sm-2 no-padding photobox">
+                                            <a href="javascript:void(0)" file-setter-pesquisa="" ng-click="goToPath('/anuncios/display/' + item.codigo)">
+                                                <!-- Imagem do anúncio-->
+                                            </a>
+                                        </div>
+
+                                        <div class="add-desc-box col-sm-7">
+                                            <div class="add-details">
+                                                <h5 class="add-title">
+                                                    <a ng-click="goToPath('/anuncios/display/' + item.codigo)"> 
+                                                        {{item.titulo}}
+                                                    </a>
+                                                </h5>
+                                                <span class="info-row"> 
+                                                    <span class="date">
+                                                        <i class="icon-truck"> </i> {{item.categoria}} - {{item.subcategoria}}
+                                                    </span>
+                                                    <br>
+                                                    <span class="date">
+                                                        <i class="icon-clock"> </i> {{item.data}} - {{item.hora}}
+                                                    </span> 
+                                                    <br>
+                                                    <span class="date">
+                                                    <i class="icon-location-2"></i> {{item.estado}} 
+                                                    </span>                                               
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-3 text-right  price-box">
+                                            <h2 class="item-price"> R$ {{item.preco}},00 </h2>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--/.adds-wrapper-->
+
+                    </div>
+                    <div class="pagination-bar text-center">
+                        <ul class="pagination">
+                            <li class="active"><a href="#">1</a></li>
+                            <li><a href="#"> ...</a></li>
+                            <li><a class="pagination-btn" href="#">Next &raquo;</a></li>
+                        </ul>
+                    </div>
+                    <!--/.pagination-bar -->
+
+                </div>
+                <!--/.page-content-->
+
+            </div>
+        </div>
+    </div>
+    <!-- /.main-container -->
+
+    <div class="footer" id="footer">
+        <div class="container">
+            <ul class=" pull-left navbar-link footer-nav">
+                <li><a href="index.html"> Home </a> <a href="about-us.html"> About us </a> <a href="terms-conditions.html"> Terms and
+                    Conditions </a> <a href="#"> Privacy Policy </a> <a href="contact.html"> Contact us </a> <a
+                        href="faq.html"> FAQ </a>
+            </ul>
+            <ul class=" pull-right navbar-link footer-nav">
+                <li> &copy; 2015 BootClassified</li>
+            </ul>
+        </div>
+
+    </div>
+    <!-- /.footer -->
+</div>
+<!-- /.wrapper -->
+
+

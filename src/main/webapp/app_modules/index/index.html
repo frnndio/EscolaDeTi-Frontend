@@ -1,0 +1,145 @@
+<div class="intro" style="background-image: url(assets/img/c4.jpg);">
+    <div class="dtable hw100">
+        <div class="dtable-cell hw100">
+            <div class="container text-center">
+                <h1 class="intro-title animated fadeInDown">
+                    Encontre aqui seu maquinário
+                </h1>
+                <p class="sub animateme fittext3 animated fadeIn">
+                    Pesquise por maquinários em todo Brasil
+                </p>
+                <div class="row search-row animated fadeInUp">
+                    <div class="col-lg-4 col-sm-4"></div>
+                    <div class="col-lg-4 col-sm-4 search-col">
+                        <a href="#!/pesquisa/pesquisar">
+                            <button class="btn btn-primary btn-search btn-block" style="border-radius: 3px !important">
+                                <i class="icon-search"></i>
+                                <strong>Pesquisar</strong>
+                            </button>
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-sm-4"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="main-container" style="min-height: 0px">
+    <div class="container">
+        <div class="col-lg-12 content-box" ng-repeat="categoria in categorias" ng-if="categoria.anuncios.length">
+            <div class="row row-featured row-featured-category" >
+                <div class="col-lg-12 box-title no-border">
+                    <h2>
+                        <span>Procurar por
+                            <span style="color:#169F84; font-weight: bold;"> Maquinário {{categoria.nome}}</span>
+                        </span>
+                    </h2>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-3 col-xs-4 f-category" ng-repeat="anuncio in categoria.anuncios">
+                    <a href="#!/anuncios/display/{{anuncio.id}}">
+                        <img ng-src="{{anuncio.fotos[0].urlFoto}}" class="img-responsive" alt="Sem imagem">
+                        <h6 class="item-name"> {{anuncio.titulo}} </h6>
+                        <span class="item-name"> R$ {{anuncio.valor}} </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12 content-box">
+            <div class="row row-featured row-featured-category">
+                <div class="col-lg-12 box-title no-border">
+                    <h2>
+                        <span>Melhores </span>Anúncios</h2>
+                </div>
+                <div style="clear:both"></div>
+                <div class="relative content featured-list-row clearfix">
+                    <nav class="slider-nav has-white-bg nav-narrow-svg">
+                        <a class="prev" id="prevItem">
+                            <span class="nav-icon-wrap"></span>
+                        </a>
+                        <a class="next" id="nextItem">
+                            <span class="nav-icon-wrap"></span>
+                        </a>
+                    </nav>
+                    <div class="no-margin item-carousel owl-carousel owl-theme">
+                      <div class="item" ng-repeat="melhorAnuncio in melhoresAnuncios">
+                        <a href="#!/anuncios/display/{{melhorAnuncio.id}}">
+                          <span class="item-carousel-thumb">
+                            <img class="item-img" ng-src="{{melhorAnuncio.fotos[0].urlFoto}}" alt="img">
+                          </span>
+                          <span class="item-name">{{melhorAnuncio.titulo}}</span>
+                          <span class="price">R$ {{melhorAnuncio.valor}}</span>
+                        </a>
+                      </div>
+                    </div>
+                    <!-- <div class="col-lg-2 col-md-3 col-sm-3 col-xs-4 f-category" ng-repeat="melhorAnuncio in melhoresAnuncios">
+                        <a href="">
+                            <img class="item-img" ng-src="{{melhorAnuncio.fotos[0].urlFoto}}" alt="img">
+                            <h6 class="item-name"> {{melhorAnuncio.titulo}} </h6>
+                            <span class="item-name"> R$ {{melhorAnuncio.valor}} </span>
+                        </a>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page-info hasOverly" style="background: url(assets/img/c3.jpg); background-size:cover">
+    <div class="bg-overly">
+        <div class="container text-center section-promo">
+            <div class="row"></div>
+        </div>
+    </div>
+</div>
+
+<div class="page-bottom-info">
+    <div class="page-bottom-info-inner">
+        <div class="page-bottom-info-content text-center">
+            <h1>Sua máquina, Nosso negócio.</h1>
+        </div>
+    </div>
+</div>
+<style>
+    a:hover {
+        color: #148F77;
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    .item-name {
+        color: #7d7d7d !important;
+        font-weight: bold !important;
+    }
+
+    .item-name:hover {
+        color: #169F84 !important;
+        transition: 0.6s;
+        font-weight: bold;
+    }
+
+    .item-name h6 {
+        color: #7d7d7d !important;
+        font-weight: bold !important;
+    }
+
+    .item-name h6:hover {
+        color: #169F84 !important;
+        transition: 0.6s;
+        font-weight: bold;
+    }
+
+    .item-img:hover {
+        transform: scale(1) translateY(-3px);
+        transition: 0.4s;
+        opacity: 0.9;
+    }
+
+    .inner h2 span {
+        font-weight: normal;
+    }
+
+    .box-title h2 span {
+        font-weight: 500;
+    }
+</style>

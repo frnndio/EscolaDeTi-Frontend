@@ -1,0 +1,82 @@
+<div class="main-container"> 
+    <div class="container">
+        <div class="row">
+            
+            <div ng-include="'navbar.html'"></div>
+
+            <div class="col-sm-9 page-content" id="ads-list">
+                <div class="inner-box">
+                    <h2 class="title-2"><i class="icon-folder-close"></i> Anúncios Expirados </h2>
+
+                    <p ng-if="!existeAnuncio()">Não existem anúncios</p>
+
+                    <div class="table-responsive" ng-if="existeAnuncio()">
+                        <div class="table-action">
+                            <!-- Selecionar todos anuncios-->
+                            <div class="table-search pull-right col-xs-7 push-right-filter">
+                                <div class="form-group">
+                                    <label class="col-xs-5 control-label text-right field-buscar"> Filtrar Anúncios <br>
+                                    </label>
+
+                                    <div class="col-xs-7 searchpan">
+                                        <input type="text" class="form-control" id="filter" ng-model="busca">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <table id="addManageTable"
+                                class="table table-striped table-bordered add-manage-table table demo push-table-down"
+                                data-filter="#filter" data-filter-text-only="true">
+                            <thead>
+                            <tr>
+                                <th> Foto</th>
+                                <th data-sort-ignore="true"> Detalhes do Anúncio</th>
+                                <th data-type="numeric"> Preço</th>
+                                <th> Opções</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="anuncio in anuncios | filter: busca">
+                                <td style="width:14%" class="add-img-td">
+                                    <a href="javascript:void(0)" file-setter="" ng-click="goToPath('/anuncios/display/' + anuncio.id)">
+                                        <!-- Imagem do anúncio-->
+                                   </a>
+                                </td>
+                                <td style="width:60%" class="ads-details-td">
+                                    <div class="ads-list">
+                                        <p id="anuncio-titulo"><strong> <a href="javascript:void(0)" ng-click="goToPath('/anuncios/display/' + anuncio.id)">{{anuncio.titulo}}</a> </strong></p>
+                                        
+                                        <p><strong> <i class="icon-calendar-2"> Criado em:</i> </strong> {{getAnuncioDate(anuncio.dataCadastro)}} <strong><i class="icon-clock-2"></i></strong> {{getAnuncioTime(anuncio.dataCadastro)}} </p>
+
+                                        <p><strong> <i class="icon-eye-2"> Visitas: </i> </strong> {{anuncio.quantidadeDeVisitas}} </p>
+
+                                        <p><strong> <i class="icon-globe"> Localização: </i></strong> {{anuncio.nomeCidade}} - {{anuncio.siglaEstado}}</p> 
+                                    </div>
+                                </td>
+                                <td style="width:16%" class="price-td">
+                                    <div><strong> R${{anuncio.valor}},00</strong></div>
+                                </td>
+                                <td style="width:10%" class="action-td">
+                                    <div>
+                                        <p style="margin-top: 10px;"><a class="btn btn-tw btn-xs btn-editar" ng-click="goToPath('anuncios/edit/' + anuncio.id + '/' + 'expirado')"> <i class="icon-docs"></i> Republicar </a></p>
+                                    </div>
+                                </td>
+
+
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!--/.row-box End-->
+
+                </div>
+            </div>
+            <!--/.page-content-->
+        </div>
+        <!--/.row-->
+    </div>
+    <!--/.container-->
+</div>
+<!-- /.main-container -->
+
+    

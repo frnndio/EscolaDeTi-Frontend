@@ -1,0 +1,150 @@
+<div class="main-container">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 page-content" id="ads-post">
+                <div class="inner-box category-content">
+                    <h2 class="title-2 uppercase"><strong> <i class="icon-paper-plane-1"></i> Impulsione Seu Anúncio </strong></h2>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <!-- Impulsionar Anuncio -->        
+                            <div class="well">
+                                <h3><i class=" icon-certificate icon-color-1"></i> Impulsione seu Anúncio!
+                                </h3>
+                                <p> Quer potencializar o alcance de pessoas e alugar mais rápido? Então impulsione seu anúncio!</p>
+
+                                <div class="panel-group" id="accordion">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <input type="checkbox" name="radioBronze" ng-model="tipoImpulsao.bronze" ng-click="setTipoImpulsao('BRONZE')">
+                                                <a data-toggle="collapse" data-target="#collapseOne">
+                                                    <strong>Anúncio Bronze</strong>
+                                                </a>
+                                                <span class="preco-impulsionar" >R$ 4,99</span>
+                                            </h4>
+                                        </div>
+                                        <div id="collapseOne" class="panel-collapse collapse in">
+                                            <div class="panel-body">
+                                                - Maior visibilidade e respostas.
+                                                <br>
+                                                - Volte ao topo dos anúncios mais 1 vez. (Anúncios perdem sua posição no topo com o tempo)
+                                                <br>
+                                                - Apareça na galeria de anúncios por 2 dias.
+                                                <br>
+                                                - Anúncio permanecerá publicado por 1 mês antes de expirar.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <input type="checkbox" ng-model="tipoImpulsao.prata" ng-click="setTipoImpulsao('PRATA')">
+                                                <a data-toggle="collapse" data-target="#collapseTwo">
+                                                    <strong>Anúncio Prata</strong>
+                                                </a>
+                                                <span class="preco-impulsionar" >R$ 9,99</span>
+                                            </h4>
+                                        </div>
+                                        <div id="collapseTwo" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                - Maior visibilidade e respostas.
+                                                <br>
+                                                - Volte ao topo dos anúncios 1 vez por dia durante 7 dias.
+                                                <br>
+                                                - Apareça na galeria de anúncios por 7 dias.
+                                                <br>
+                                                - Anúncio permanecerá publicado por 2 meses antes de expirar.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <input type="checkbox" ng-model="tipoImpulsao.ouro" ng-click="setTipoImpulsao('OURO')">
+                                                <a data-toggle="collapse" data-target="#collapseThree">
+                                                    <strong>Anúncio Ouro</strong>
+                                                </a>
+                                                <span class="preco-impulsionar" >R$ 14,99</span>
+                                            </h4>
+                                        </div>
+                                        <div id="collapseThree" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                - Maior visibilidade e respostas.
+                                                <br>
+                                                - Volte ao topo dos anúncios 1 vez por dia durante 14 dias.
+                                                <br>
+                                                - Apareça na galeria de anúncios por 14 dias.
+                                                <br>
+                                                - Anúncio permanecerá publicado por 4 meses antes de expirar.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <input type="checkbox" ng-model="tipoImpulsao.diamante" ng-click="setTipoImpulsao('DIAMANTE')">
+                                                <a data-toggle="collapse" data-target="#collapseFour">
+                                                    <strong>Anúncio Diamante</strong>
+                                                </a>
+                                                <span class="preco-impulsionar" >R$ 19,99</span>
+                                            </h4>
+                                        </div>
+                                        <div id="collapseFour" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                - Maior visibilidade e respostas.
+                                                <br>
+                                                - Volte ao topo dos anúncios 1 vez por dia durante 30 dias.
+                                                <br>
+                                                - Apareça na galeria de anúncios por 30 dias.
+                                                <br>
+                                                - Anúncio permanecerá publicado por 6 meses antes de expirar.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="impulsionar-btn-container">
+                                        <div class="impulsionar-btns">
+                                            <button class="btn btn-danger" ng-click="recusarImpulsao()">Não, obrigado</button>
+                                            <button class="btn btn-primary" ng-click="impulsionar()">Impulsionar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Impulsionar Anuncio -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.page-content -->
+
+            <div class="col-md-3 reg-sidebar">
+                <div class="reg-sidebar-inner text-center">
+
+                    <div class="panel sidebar-panel">
+                        <div class="panel-heading uppercase">
+                            <small><strong>crie um bom anúncio!</strong></small>
+                        </div>
+                        <div class="panel-content">
+                            <div class="panel-body text-left">
+                                <ul class="list-check">
+                                    <li> Use títulos e descrições sucintos e objetivos </li>
+                                    <li> Escolha a categoria que melhor enquadre o anúncio</li>
+                                    <li> Adicione fotos reais do anúncio</li>
+                                    <li> Peça um preço justo</li>
+                                    <li> Confira os dados do anúncio antes de anunciar</li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <!--/.reg-sidebar-->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+</div>
+<!-- /.main-container -->

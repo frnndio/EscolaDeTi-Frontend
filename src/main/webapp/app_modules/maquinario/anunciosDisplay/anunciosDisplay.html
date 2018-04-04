@@ -1,0 +1,187 @@
+<div class="main-container">
+    <div class="container">
+        <!-- <ol class="breadcrumb pull-left">
+            <li><a href="#"><i class="icon-home fa"></i></a></li>
+            <li><a href="category.html">All Ads</a></li>
+            <li><a href="sub-category-sub-location.html">Cars</a></li>
+            <li class="active">Search Results</li>
+        </ol>
+        <div class="pull-right backtolist"><a href="sub-category-sub-location.html"> <i
+                class="fa fa-angle-double-left"></i> Back to Results</a></div> -->
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-9 page-content col-thin-right">
+                <div class="inner inner-box ads-details-wrapper">
+                    <h1 class="auto-heading"><span class="auto-title left">{{anuncio.titulo}}</span> <span
+                            class="auto-price pull-right"> R${{anuncio.valor}},00 </span></h1>
+
+                    <div style="clear:both;"></div>
+                    <span class="info-row">
+                        <span class="date">
+                            <i class=" icon-clock"> </i> Anúncio criado em: {{getAnuncioDate(anuncio.dataCadastro)}}
+                        </span> -
+                        <span class="item-location">
+                            <i class="fa fa-map-marker"></i> Localidade: {{estado}}
+                        </span>
+                    </span>
+
+                    <div class="row ">
+                        <div class="col-sm-9 automobile-left-col">
+
+                            <div class="ads-image">
+                                <ul class="bxslider" file-display="">
+                                    <!-- imagens -->
+                                </ul>
+                                <div id="bx-pager">
+                                    <!-- imagens -->
+                                </div>
+                            </div>
+                            <!--ads-image-->
+                        </div>
+                        <!-- /.automobile-left-col-->
+
+                        <div class="col-sm-3 automobile-right-col">
+                            <div class="inner">
+
+                                <div class="key-features">
+                                    <div class="media">
+
+                                        <div class="media-body">
+                                            <span class="media-heading">MARCA</span>
+                                            <span class="data-type">{{anuncio.marca}}</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="media">
+
+                                        <div class="media-body">
+                                            <span class="media-heading">ANO</span>
+                                            <span class="data-type">{{anuncio.ano}}</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="media">
+
+                                        <div class="media-body">
+                                            <span class="media-heading">CATEGORIA</span>
+                                            <span class="data-type">{{categoria}}</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="media">
+
+                                        <div class="media-body">
+                                            <span class="media-heading">SUBCATEGORIA</span>
+                                            <span class="data-type">{{anuncio.subCategoria.nome}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="media">
+                                        <div class="media-body">
+                                            <span class="media-heading">ESTADO</span>
+                                            <span class="data-type">{{estado}}</span>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="media">
+                                        <div class="media-body">
+                                            <span class="media-heading">CIDADE</span>
+                                            <span class="data-type">{{cidade}}</span>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--/.row-->
+
+                    <br>
+
+                    <div class="Ads-Details">
+                        <h5 class="list-title"><strong>Detalhes do Anúncio</strong></h5>
+
+                        <div class="row">
+                            <div class="ads-details-info col-md-8">
+                                <p>{{anuncio.descricao}}</p>
+                            </div>
+                            <div class="col-md-4">
+                                <aside class="panel panel-body panel-details">
+                                    <ul>
+                                        <li>
+                                            <p class=" no-margin "><strong>Preço:</strong> R${{anuncio.valor}},00 </p>
+                                        </li>
+
+                                        <li ng-if="anuncio.negociavel">
+                                            <p class="no-margin"><strong>Negociável:</strong> Sim </p>
+                                        </li>
+
+                                        <li ng-if="!anuncio.negociavel">
+                                            <p class="no-margin"><strong>Negociável:</strong> Não </p>
+                                        </li>
+                                    </ul>
+                                </aside>
+                                <div class="ads-action">
+                                    <ul class="list-border">
+                                        <li><a href="javascript:void(0)"> <i class=" fa fa-user"></i> Mais anúncios deste anunciante </a></li>
+                                        <li><a href="javascript:void(0)"> <i class=" fa fa-heart"></i> Salvar anúncio </a></li>
+                                        <li><a href="javascript:void(0)"> <i class="fa fa-share-alt"></i> Compartilhar anúncio </a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content-footer text-right">
+                            <a class="btn btn-danger" data-toggle="modal" href="#contactAdvertiser">
+                                <i class="fa icon-info-circled-alt"></i>
+                                Reportar Abuso
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!--/.ads-details-wrapper-->
+
+            </div>
+            <!--/.page-content-->
+
+            <div class="col-sm-3  page-sidebar-right">
+                <aside>
+                    <div class="panel sidebar-panel panel-contact-seller">
+                        <div class="panel-heading">Contactar Anunciante</div>
+                        <div class="panel-content user-info">
+                            <div class="panel-body text-center">
+                                <div class="seller-info">
+                                    <h3 class="no-margin">{{anuncio.pessoa.nome}}</h3>
+                                </div>
+                                <div class="user-ads-action"><a href="#contactAdvertiser" data-toggle="modal"
+                                                                class="btn   btn-default btn-block"><i
+                                        class=" icon-mail-2"></i> Enviar Mensagem </a> <a
+                                        class="btn  btn-info btn-block"><i class=" icon-phone-1"></i> {{telefone}}
+                                </a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel sidebar-panel">
+                        <div class="panel-heading">Dicas de Segurança</div>
+                        <div class="panel-content">
+                            <div class="panel-body text-left">
+                                <ul class="list-check">
+                                    <li> Verifique se as imagens do anúncio aparentam autênticas. </li>
+                                    <li> Pague somente após a entrega do equipamento ou implemento. </li>
+                                    <li> Certifique-se de que equipamentos e implementos estejam em boas condições. </li>
+                                </ul>
+                                <p><a class="pull-right" href="#"> Saiba mais <i
+                                        class="fa fa-angle-double-right"></i> </a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/.categories-list-->
+                </aside>
+            </div>
+            <!--/.page-side-bar-->
+        </div>
+    </div>
+</div>
+<!-- /.main-container -->

@@ -1,0 +1,155 @@
+.field-buscar {
+    margin-top: 7px;
+}
+
+.btn-impulsionar {
+    margin-top: 10px;
+}
+
+.btn-editar,
+.btn-excluir {
+    width: 100%;
+}
+
+#gallery .thumbnail {
+    width: 100px;
+    height: 100px;
+    float: left;
+    margin: 2px;
+}
+
+#gallery .thumbnail img {
+    width: 120px;
+    height: 71.5px;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.salvar-btn {
+    float: right;
+}
+
+.file-upload {
+    position: relative;
+    overflow: hidden;
+    margin-left: 15px;
+    max-width: 100px;
+}
+
+.file-upload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+.center-image {
+    position: relative;
+    top: 10px;
+    height: 70px;
+}
+
+.img-delete-icon {
+    float: right;
+}
+
+.display-none {
+    display: none;
+}
+
+.ads-list p {
+    margin-bottom: 2px;
+}
+
+.ads-list #anuncio-titulo {
+    margin-bottom: 5px;
+}
+
+.warning-msg {
+    color: red;
+}
+
+.push-table-down {
+    margin-top: 44px;
+}
+
+.push-right-filter {
+    padding: 0;
+}
+
+.impulsionar-btn-container {
+    position: relative;
+    top: 20px;
+}
+
+.impulsionar-btns {
+    position: relative;
+    left: 455px;
+    width: 220px;
+}
+
+.preco-impulsionar {
+    float: right;
+}
+
+.finalizar-btn {
+    float: right;
+    position: relative;
+    right: 10px;
+}
+
+.avaliacao-row {
+    position: relative;
+    top: 5px;
+}
+
+.impulsao-img {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    right: 280px;
+    top: 210px;
+}
+
+/* navbar scrolling css */
+@media screen and (min-width: 1200px){
+
+    .fixar-ads-list-navbar,
+    .fixar-ads-post-navbar {
+        position: fixed;
+        max-width: 256px;
+        top: 95px;
+    }
+
+    .fixar-ads-post-navbar {
+        left: 1208px;
+    }
+
+    .float-right {
+        float: right;
+    }
+
+    .float-left {
+        float: left;
+    }
+
+    .images-gallery {
+        padding-left: 198px;
+        padding-right: 50px;
+    }
+
+    .warning-msg {
+        color: red;
+        width: 460px;
+        position: relative;
+        left: 185px;
+        top: -10px;
+    }
+
+}
+

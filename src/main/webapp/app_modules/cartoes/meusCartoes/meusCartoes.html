@@ -1,0 +1,62 @@
+<div class="main-container">
+    <div class="container">
+    </div>
+    <div class="container">
+        <div class="row">
+
+            <div ng-include="'navbar.html'"></div>
+            
+            <div class="col-sm-3 page-sidebar mobile-filter-sidebar"></div>
+            <div class="col-sm-9 page-content col-thin-right">
+                <div class="inner-box">
+                    <h2 class="title-2"><i class="icon-docs"></i> Meus Cartões </h2>
+                    <p ng-if="meusCartoes.length <= 0">Não existem cartãoes cadastrados</p>
+                    <div class="table-responsive" ng-if="meusCartoes.length > 0">
+                        <table class="table table-striped table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <td>Número</td>
+                                    <td>Nome Titular</td>
+                                    <td>Mês/Ano</td>
+                                    <td>Bandeira</td>
+                                    <td>Ações</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-show="meusCartoes.length > 0" ng-repeat="cartao in meusCartoes">
+                                    <td><span style="margin-top: 5px; display:inline-block">{{hideCartao(cartao.numeroCartao)}}</span></td>
+                                    <td><span style="margin-top: 5px; display:inline-block">{{cartao.nomeTitular}}</span></td>
+                                    <td><span style="margin-top: 5px; display:inline-block">{{cartao.mesValidade}}/{{cartao.anoValidade}}</span></td>
+                                    <td><span style="margin-top: 5px; display:inline-block">{{validaBandeiraCartao(cartao.numeroCartao)}}</span></td>
+                                    <td>
+                                        <button ng-click="deleteCartao(cartao.id)"
+                                                title="Excluir"
+                                                class="btn btn-sm btn-danger">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr ng-show="subCategoryList.length == 0">
+                                    <td colspan="5">
+                                        <div class="alert alert-info" role="alert">Nenhuma subcategoria encontrada</div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row" >
+                        <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="pull-right">
+                                <button type="button"
+                                        ng-click="goToPath('/cartoes/novo')"
+                                        class="btn btn-primary">
+                                    Novo
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

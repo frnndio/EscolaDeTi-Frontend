@@ -1,0 +1,303 @@
+<div class="main-container">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 page-content" id="ads-post">
+                <div class="inner-box category-content">
+                    <h2 class="title-2 uppercase"><strong> <i class="{{iconPagina}}"></i>{{tituloPagina}}</strong></h2>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <form class="form-horizontal" name="anuncioMaquinarioForm" ng-submit="salvar(anuncio)">
+                                <fieldset>
+
+                                    <!-- Campo Categoria -->
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Categorias</label>
+
+                                        <div class="col-md-8">
+                                            <select name="categoria"
+                                                    id="categoria"
+                                                    class="form-control"
+                                                    ng-model="idCategoria"
+                                                    ng-options="categoria.id as categoria.nome for categoria in categorias"
+                                                    ng-change="getSubcategorias(idCategoria)"
+                                                    required>
+                                                <option value="" selected="selected" >Selecione a categoria</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- <div class="col-md-8">
+                                            <select name="categoria" id="categoria" class="form-control" ng-required="true">
+                                                <option value="" selected="selected">Selecione uma categoria</option>
+                                                <option ng-repeat="categoria in categorias" value="{{categoria.nome}}">{{categoria.nome}}</option>
+                                            </select>
+                                        </div> -->
+
+                                    </div>
+
+                                    <!-- Mensagem de validação campo categoria-->
+                                    <div class="warning-msg" ng-if="anuncioMaquinarioForm.categoria.$invalid && anuncioMaquinarioForm.categoria.$dirty">
+                                        <p>O campo Categoria é obrigatório, por favor informe um valor.</p>
+                                    </div>
+
+                                    <!-- Campo Subcategoria -->
+                                    <div class="form-group" ng-if="idCategoria">
+                                        <label class="col-md-3 control-label">Subcategoria</label>
+
+                                        <div class="col-md-8">
+                                            <select name="subcategoria"
+                                                    id="subcategoria"
+                                                    class="form-control"
+                                                    ng-model="anuncio.idSubCategoria"
+                                                    ng-options="subcategoria.id as subcategoria.nome for subcategoria in subcategorias"
+                                                    required>
+                                                <option value="" selected="selected">Selecione a subcategoria</option>
+                                            </select>
+                                        </div>
+
+                                         <!-- <div class="col-md-8">
+                                            <select name="subcategoria" id="subcategoria" class="form-control" ng-model="anuncio.subcategoria" ng-required="true">
+                                                <option value="" selected="selected">Selecione uma subcategoria</option>
+                                                <option ng-repeat="subcategoria in getSubcategorias(categorias, anuncio.categoria)" value="{{subcategoria.nome}}">{{subcategoria.nome}}</option>
+                                            </select>
+                                        </div> -->
+                                    </div>
+
+                                    <!-- Mensagem de validação campo categoria-->
+                                    <div class="warning-msg" ng-if="anuncioMaquinarioForm.subcategoria.$invalid && anuncioMaquinarioForm.subcategoria.$dirty">
+                                        <p>O campo Subcategoria é obrigatório, por favor informe um valor.</p>
+                                    </div>
+
+                                    <!-- Campo Título-->
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Título</label>
+
+                                        <div class="col-md-8">
+                                            <input id="titulo" name="titulo" placeholder="Título do anúncio" class="form-control input-md" type="text" ng-model="anuncio.titulo" ng-required="true" ng-maxlength="60">
+                                        </div>
+                                    </div>
+
+                                    <!-- Mensagem de validação campo título-->
+                                    <div class="warning-msg" ng-if="anuncioMaquinarioForm.titulo.$error.required && anuncioMaquinarioForm.titulo.$dirty">
+                                        <p>O campo Título é obrigatório, por favor informe um valor.</p>
+                                    </div>
+
+                                    <!-- Mensagem de validação campo título-->
+                                    <div class="warning-msg" ng-if="anuncioMaquinarioForm.titulo.$error.maxlength">
+                                        <p>O campo Título deve ter no máximo 60 caracteres.</p>
+                                    </div>
+
+                                    <!-- Textarea -->
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Descrição </label>
+
+                                        <div class="col-md-8">
+                                            <textarea class="form-control" id="descricao" name="descricao" rows="4" placeholder="Descrição do anúncio" ng-model="anuncio.descricao" ng-required="true"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <!-- Mensagem de validação campo descrição-->
+                                    <div class="warning-msg" ng-if="anuncioMaquinarioForm.descricao.$error.required && anuncioMaquinarioForm.descricao.$dirty">
+                                        <p>O campo Descrição é obrigatório, por favor informe um valor.</p>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Estado</label>
+
+                                        <div class="col-md-8">
+                                            <select name="estado"
+                                                    id="estado"
+                                                    class="form-control"
+                                                    ng-model="idEstado"
+                                                    ng-options="estado.id as estado.nome for estado in estados | orderBy:'nome'"
+                                                    ng-change="getCidadesByEstadoId(idEstado)"
+                                                    required>
+                                                <option value="" selected="selected" >Selecione o estado</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <!-- Mensagem de validação campo estado-->
+                                    <div class="warning-msg" ng-if="anuncioMaquinarioForm.estado.$error.required && anuncioMaquinarioForm.estado.$dirty">
+                                        <p>O campo Estado é obrigatório, por favor informe um valor.</p>
+                                    </div>
+
+                                    <!-- Cidade de Localização -->
+                                    <div class="form-group display-out" ng-if="idEstado">
+                                        <label class="col-md-3 control-label">Cidade</label>
+
+                                        <div class="col-md-8">
+                                            <select name="cidade"
+                                                    id="cidade"
+                                                    class="form-control"
+                                                    ng-model="idCidade"
+                                                    ng-options="cidade.id as cidade.nome for cidade in cidades | orderBy:'nome'"
+                                                    ng-change="setEndereco(idCidade)"
+                                                    required>
+                                                <option value="" selected="selected" >Selecione a cidade</option>
+                                            </select>
+                                        </div>
+
+                                       <!-- <div class="col-md-8">
+                                            <select name="cidade" id="cidade" class="form-control" ng-model="anuncio.idEndereco.valor" ng-required="true">
+                                                <option value="" selected="selected">Selecione uma cidade</option>
+                                                <option ng-repeat="cidade in cidades" value="{{cidade.nome}}">{{cidade.nome}}</option>
+                                            </select>
+                                        </div> -->
+                                    </div>
+
+                                    <!-- Mensagem de validação campo cidade-->
+                                    <div class="warning-msg" ng-if="anuncioMaquinarioForm.cidade.$error.required && anuncioMaquinarioForm.cidade.$dirty">
+                                        <p>O campo Cidade é obrigatório, por favor informe um valor.</p>
+                                    </div>
+
+                                    <!-- Marca -->
+                                    <div class="form-group" ng-if="idCategoria">
+                                        <label class="col-md-3 control-label">Marca</label>
+
+                                        <div class="col-md-8">
+                                            <select id="marca" name="marca" class="form-control" ng-model="anuncio.marca" ng-required="true">
+                                                <option value="">Escolha uma marca</option>
+                                                <option ng-repeat="marca in getMarcas(idCategoria)" value="{{marca.nome}}">{{marca.nome}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <!-- Mensagem de validação campo marca-->
+                                    <div class="warning-msg" ng-if="anuncioMaquinarioForm.marca.$error.required && anuncioMaquinarioForm.marca.$dirty">
+                                        <p>O campo Marca é obrigatório, por favor informe um valor.</p>
+                                    </div>
+
+                                    <!-- Ano -->
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="seller-Location">Ano</label>
+
+                                        <div class="col-md-8">
+                                            <select id="ano" name="ano" class="form-control" ng-model="anuncio.ano" ng-required="true">
+                                                <option value="">Selecione o ano</option>
+                                                <option ng-repeat="ano in anos" value="{{ano}}">{{ano}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <!-- Mensagem de validação campo ano-->
+                                    <div class="warning-msg" ng-if="anuncioMaquinarioForm.ano.$error.required && anuncioMaquinarioForm.ano.$dirty">
+                                        <p>O campo Ano é obrigatório, por favor informe um valor.</p>
+                                    </div>
+
+                                    <!-- Campo CEP-->
+                                    <!-- <div class="form-group">
+                                        <label class="col-md-3 control-label">CEP</label>
+
+                                        <div class="col-md-8">
+                                            <input id="cep" name="cep" placeholder="CEP" class="form-control input-md" type="text" ng-model="anuncio.endereco.cep" ng-required="true" data-mask="cep">
+                                        </div>
+                                    </div> -->
+
+                                    <!-- Prepended text-->
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Preço</label>
+
+                                        <div class="col-md-4">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">R$</span>
+                                                <input id="preco" name="preco" class="form-control" placeholder="Informe um preço" type="text" ng-model="anuncio.valor" ng-required="true">
+                                            </div>
+                                        </div>
+                                        <!-- <div class="col-md-4">
+                                            <select id="modoDeCobranca" name="modoDeCobranca" class="form-control" ng-model="anuncio.modoDeCobranca" ng-required="true">
+                                                <option value="">Modo de cobrança</option>
+                                                <option ng-repeat="modoDeCobranca in modosDeCobranca" value="{{modoDeCobranca}}">{{modoDeCobranca}}</option>
+                                            </select>
+                                        </div> -->
+                                        <div class="col-md-4">
+                                            <input type="text" placeholder="Telefone" class="form-control input-md" required name="telefone" id="telefone" ng-model="anuncio.telefone" data-mask="phone">
+                                        </div>
+                                    </div>
+
+                                    <!-- Mensagem de validação campo preco-->
+                                    <div class="warning-msg" ng-if="anuncioMaquinarioForm.preco.$error.required && anuncioMaquinarioForm.preco.$dirty">
+                                        <p>O campo Preço é obrigatório, por favor informe um valor.</p>
+                                    </div>
+
+                                    <!-- Mensagem de validação campo modo de cobrança-->
+                                    <div class="warning-msg" ng-if="anuncioMaquinarioForm.modoDeCobranca.$error.required && anuncioMaquinarioForm.modoDeCobranca.$dirty">
+                                        <p>O campo Modo de Cobrança é obrigatório, por favor informe um valor.</p>
+                                    </div>
+
+                                    <!-- Mensagem de validação campo telefone-->
+                                    <div class="warning-msg" ng-if="anuncioMaquinarioForm.telefone.$error.required && anuncioMaquinarioForm.telefone.$dirty">
+                                            <p>O campo Telefone é obrigatório, por favor informe um valor.</p>
+                                        </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Negociável</label>
+
+                                        <div class="col-md-8">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" ng-model="anuncio.negociavel">
+
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Imagens</label>
+
+                                        <div class="col-md-8 file-upload btn btn-primary">
+                                            <span>Carregar</span>
+                                            <input type="file" id="fileinput" accept="image/*" class="upload" file-model="">
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group images-gallery">
+                                        <div id="gallery"></div>
+                                    </div>
+
+                                    <!-- Button  -->
+                                    <div class="form-group salvar-btn">
+                                        <label class="col-md-3 control-label"></label>
+
+                                        <div class="col-md-8"><button type="submit" id="novoEditarBtn" class="btn btn-primary btn-lg" ng-disabled="anuncioMaquinarioForm.$invalid">Salvar</button></div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.page-content -->
+
+            <div class="col-md-3 reg-sidebar">
+                <div class="reg-sidebar-inner text-center">
+
+                    <div class="panel sidebar-panel">
+                        <div class="panel-heading uppercase">
+                            <small><strong>crie um bom anúncio!</strong></small>
+                        </div>
+                        <div class="panel-content">
+                            <div class="panel-body text-left">
+                                <ul class="list-check">
+                                    <li> Use títulos e descrições sucintos e objetivos </li>
+                                    <li> Escolha a categoria que melhor enquadre o anúncio</li>
+                                    <li> Adicione fotos reais do anúncio</li>
+                                    <li> Estipule um preço justo</li>
+                                    <li> Confira todos os dados antes de anunciar</li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <!--/.reg-sidebar-->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+</div>
+<!-- /.main-container -->

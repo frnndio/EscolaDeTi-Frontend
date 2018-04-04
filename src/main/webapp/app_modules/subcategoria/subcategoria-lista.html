@@ -1,0 +1,68 @@
+<div class="main-container">
+    <div class="container">
+        <!-- <ol class="breadcrumb pull-left">
+            <li><a href="#"><i class="icon-home fa"></i></a></li>
+            <li><a href="category.html">Painel Administrativo</a></li>
+            <li class="active">Subcategorias</li>
+        </ol> -->
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3 page-sidebar mobile-filter-sidebar" ng-include="navbar"></div>
+            <div class="col-sm-9 page-content col-thin-right">
+                <div class="inner-box">
+                    <h2 class="title-2"><i class="icon-docs"></i> Consulta de subcategorias </h2>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <td>Nome</td>
+                                    <td>Descrição</td>
+                                    <td>Categoria</td>
+                                    <td>Situação</td>
+                                    <td>Ações</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-show="subCategoryList.length > 0" ng-repeat="item in subCategoryList">
+                                    <td>{{item.nome}}</td>
+                                    <td>{{item.descricao}}</td>
+                                    <td>{{item.nomeCategoria}}</td>
+                                    <td>{{item.ativo ? "Ativo" : "Inativo"}}</td>
+                                    <td>
+                                        <button ng-click="editSubCategory(item.id)"
+                                                title="Clique aqui para editar"
+                                                class="btn btn-sm btn-info">
+                                            <i class="fa fa-pencil"></i>
+                                        </button>
+                                        <button ng-click="removeSubCategory(item.id)"
+                                                title="Clique aqui para excluir"
+                                                class="btn btn-sm btn-danger">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr ng-show="subCategoryList.length == 0">
+                                    <td colspan="5">
+                                        <div class="alert alert-info" role="alert">Nenhuma subcategoria encontrada</div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="pull-right">
+                                <button type="button"
+                                        ng-click="newSubCategory()"
+                                        class="btn btn-primary">
+                                    Novo
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

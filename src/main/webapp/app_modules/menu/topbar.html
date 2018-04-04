@@ -1,0 +1,81 @@
+<style>
+
+    .navbar-brand:hover {
+        opacity: 0.5;
+        transition: 0.5s;
+    }
+
+    .navbar-default .navbar-nav>li>a {
+        font-weight: bold;
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+
+    .navbar-default .navbar-nav>li>a:hover {
+        font-weight: bold;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        color: #FFF;
+        background: #1b7e5a;
+        transition: 0.5s;
+    }
+
+</style>
+
+<div class="header">
+    <nav class="navbar navbar-site navbar-default" role="navigation" style="height: 80px;">
+        <div class="container">
+            <div class="navbar-header">
+                <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
+                    <span class="sr-only">Trocar navegação</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+                </button>
+                <a href="#" class="navbar-brand logo logo-title" style="margin-top:-3px; font-size: 28px !important;">
+                    <span>
+                        <img src="assets/img/logo.png" alt="logo" height="45">
+                    </span>   M<span>AQS</span>
+                </a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-left">
+                    <li>
+                       <!-- <a class="navbar-link" href="#!/pesquisa/pesquisar">Anúncios</a> -->
+                    </li>
+                </ul>
+                <ul ng-show="!isLogged" class="nav navbar-nav navbar-right">
+                    <li><a class="navbar-link" style="font-weight: bold;" href="#!/login">Entrar</a></li>
+                    <li><a class="navbar-link" style="font-weight: bold;" href="#!/usuario/cadastrar">Cadastrar</a></li>
+                </ul>
+                <ul ng-show="isLogged" class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
+                            <span>Olá {{pessoaLogada.nome}}</span> <i class="icon-user fa"></i> <i class=" icon-down-open-big fa"></i>
+                        </a>
+                        <ul class="dropdown-menu user-menu">
+                            <li class="active">
+                                <a href="javascript:void(0)">
+                                    <i class="icon-home"></i> Menu
+                                </a>
+                            </li>
+                            <li><a href="#!/anuncios" ><i class="icon-th-thumb"></i>Meu Perfil</a></li>
+                            <li><a href="#!/dados-pessoais"><i class="icon-pencil-1"></i>Editar Perfil</a></li>
+                            <li ng-if="pessoaLogada.isAdministrador">
+                                <a href="#!/categorias">
+                                    <i class="icon-star-circled"></i>Administrativo
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" ng-click="sair()">
+                            Sair
+                            <i class="glyphicon glyphicon-off"></i>
+                        </a>
+                    </li>
+                    <li ng-show="isLogged" class="postadd">
+                        <a class="btn btn-block btn-border btn-post btn-danger" ng-click="goToFazerAnuncio()" style="padding: 12px 0">Criar Anúncio</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>

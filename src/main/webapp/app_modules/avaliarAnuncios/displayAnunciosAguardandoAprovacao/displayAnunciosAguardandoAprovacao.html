@@ -1,0 +1,143 @@
+<div class="main-container">
+    <div class="container">
+        <div class="row">
+
+                <div style="float: left" ng-include="'app_modules/menu/admin-navbar.html'"></div>
+
+            <div class="col-sm-9 page-content col-thin-right">
+                <div class="inner inner-box ads-details-wrapper">
+                    <h1 class="auto-heading"><span class="auto-title left">{{anuncio.titulo}}</span> <span
+                            class="auto-price pull-right"> R${{anuncio.valor}},00 </span></h1>
+
+                    <div style="clear:both;"></div>
+                    <span class="info-row"> 
+                        <span class="date">
+                            <i class=" icon-clock"> </i> Anúncio criado em: {{getAnuncioDate(anuncio.dataCadastro)}} 
+                        </span> -
+                        <span class="item-location">
+                            <i class="fa fa-map-marker"></i> Localidade: {{estado}} 
+                        </span> 
+                    </span>
+
+                    <div class="row ">
+                        <div class="col-sm-9 automobile-left-col">
+
+                            <div class="ads-image">
+                                <ul class="bxslider" file-display="">
+                                    <!-- imagens -->
+                                </ul>
+                                <div id="bx-pager">
+                                    <!-- imagens -->
+                                </div>
+                            </div>
+                            <!--ads-image-->
+                        </div>
+                        <!-- /.automobile-left-col-->
+
+                        <div class="col-sm-3 automobile-right-col">
+                            <div class="inner">
+
+                                <div class="key-features">
+                                    <div class="media">
+
+                                        <div class="media-body">
+                                            <span class="media-heading">MARCA</span>
+                                            <span class="data-type">{{anuncio.marca}}</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="media">
+
+                                        <div class="media-body">
+                                            <span class="media-heading">ANO</span>
+                                            <span class="data-type">{{anuncio.ano}}</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="media">
+
+                                        <div class="media-body">
+                                            <span class="media-heading">CATEGORIA</span>
+                                            <span class="data-type">{{categoria}}</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="media">
+
+                                        <div class="media-body">
+                                            <span class="media-heading">SUBCATEGORIA</span>
+                                            <span class="data-type">{{anuncio.subCategoria.nome}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="media">
+                                        <div class="media-body">
+                                            <span class="media-heading">ESTADO</span>
+                                            <span class="data-type">{{estado}}</span>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="media">
+                                        <div class="media-body">
+                                            <span class="media-heading">CIDADE</span>
+                                            <span class="data-type">{{cidade}}</span>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--/.row-->
+
+                    <br>
+
+                    <div class="Ads-Details">
+                        <h5 class="list-title"><strong>Detalhes do Anúncio</strong></h5>
+
+                        <div class="row">
+                            <div class="ads-details-info col-md-8">
+                                <p>{{anuncio.descricao}}</p>
+                            </div>
+                            <div class="col-md-4">
+                                <aside class="panel panel-body panel-details">
+                                    <ul>
+                                        <li>
+                                            <p class=" no-margin "><strong>Preço:</strong> R${{anuncio.valor}},00 </p>
+                                        </li>
+
+                                        <li ng-if="anuncio.negociavel">
+                                            <p class="no-margin"><strong>Negociável:</strong> Sim </p>
+                                        </li>
+
+                                        <li ng-if="!anuncio.negociavel">
+                                            <p class="no-margin"><strong>Negociável:</strong> Não </p>
+                                        </li>
+                                    </ul>
+                                </aside>
+                                
+                            </div>
+                        </div>
+                        <div class="content-footer text-right">
+                            <a class="btn btn-danger" href="javascript:void(0)" ng-click="reprovarAnuncio(anuncio)">
+                                <i class="icon-cancel"></i> 
+                                Reprovar
+                            </a> 
+                            <a class="btn btn-primary" href="javascript:void(0)" ng-click="aprovarAnuncio(anuncio)">
+                                <i class="icon-check"></i> 
+                                Aprovar
+                            </a> 
+                        </div>
+                    </div>
+                </div>
+                <!--/.ads-details-wrapper-->
+
+            </div>
+            <!--/.page-content-->
+
+        </div>
+    </div>
+</div>
+<!-- /.main-container -->
